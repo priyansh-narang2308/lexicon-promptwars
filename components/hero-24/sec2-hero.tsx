@@ -139,7 +139,7 @@ const PhoneFrame = () => (
         >
           Hirefy
         </a>
-        <div className="relative size-[24px] shrink-0 cursor-pointer transition-opacity duration-200 hover:opacity-70">
+        <div className="relative size-6 shrink-0 cursor-pointer transition-opacity duration-200 hover:opacity-70">
           <img
             alt="Menu"
             className="absolute inset-0 block size-full max-w-none"
@@ -150,17 +150,17 @@ const PhoneFrame = () => (
     </div>
 
     {}
-    <div className="absolute left-1/2 top-[90px] flex w-[370px] -translate-x-1/2 flex-col items-center gap-[24px]">
-      <div className="relative flex w-full shrink-0 flex-col items-center gap-[8px] text-center text-white">
+    <div className="absolute left-1/2 top-22.5 flex w-92.5 -translate-x-1/2 flex-col items-center gap-6">
+      <div className="relative flex w-full shrink-0 flex-col items-center gap-2 text-center text-white">
         <h1
           style={delay(80)}
-          className={`${REVEAL} relative w-[320px] shrink-0 text-[35px] leading-[40px] tracking-[-1.4px]`}
+          className={`${REVEAL} relative w-[320px] shrink-0 text-[35px] leading-10 tracking-[-1.4px]`}
         >
           Build Your Global Team. Effortlessly.
         </h1>
         <p
           style={delay(160)}
-          className={`${REVEAL} relative w-full shrink-0 text-[14px] leading-[1.5] text-[rgba(255,255,255,0.7)]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[14px] leading-normal text-[rgba(255,255,255,0.7)]`}
         >
           Hire exceptional talent across 180+ countries, automate compliance,
           and manage international payroll.

@@ -484,7 +484,7 @@ const DesktopFrame = () => (
 
     {}
     <GlassCard
-      className="left-[803px] top-[685px] w-[246px] gap-[16px] rounded-[6px] border p-[14px]"
+      className="left-200.75 top-171.25 w-61.5 gap-4 rounded-[6px] border p-3.5"
       plate="left-[calc(50%-0.5px)] top-1/2"
       step={480}
     >

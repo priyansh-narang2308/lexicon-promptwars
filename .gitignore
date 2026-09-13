@@ -37,6 +37,8 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 *.log
+AGENTS.md
+CLAUDE.md
 
 # env files
 .env*

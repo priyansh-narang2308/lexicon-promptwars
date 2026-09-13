@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AuthProvider } from "@/lib/auth-context";
+import { ContractProvider } from "@/lib/contract-context";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -33,7 +34,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <ContractProvider>{children}</ContractProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

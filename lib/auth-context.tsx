@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { UserPersona } from "./types";
 import { USER_PERSONAS } from "./contracts-data";
 
 export interface AuthUser {

@@ -224,7 +224,7 @@ const PhoneFrame = () => (
 
     {}
     <GlassCard
-      className="left-[calc(50%+79px)] top-[667px] w-[212px] -translate-x-1/2 gap-[12px] rounded-[4.729px] border-[0.788px] p-[12px]"
+      className="left-[calc(50%+79px)] top-166.75 w-[212px] -translate-x-1/2 gap-[12px] rounded-[4.729px] border-[0.788px] p-[12px]"
       plate="left-[calc(50%+25.5px)] top-[calc(50%+4.21px)]"
       step={480}
     >
@@ -470,7 +470,7 @@ const DesktopFrame = () => (
 
     {}
     <GlassCard
-      className="left-[339px] top-[504px] w-[169px] gap-[4px] rounded-[6px] border p-[16px]"
+      className="left-84.75 top-126 w-42.25 gap-1 rounded-[6px] border p-4"
       plate="left-1/2 top-1/2"
       step={400}
     >
@@ -491,8 +491,8 @@ const DesktopFrame = () => (
       <p className="relative w-full shrink-0 text-[14px] leading-[1.4] text-white">
         We expanded into 12 new markets in under 60 days without hiring.
       </p>
-      <div className="relative flex w-full shrink-0 items-center gap-[6px]">
-        <div className="relative size-[32px] shrink-0">
+      <div className="relative flex w-full shrink-0 items-center gap-1.5">
+        <div className="relative size-8 shrink-0">
           <img
             alt=""
             className="absolute inset-0 block size-full max-w-none"
@@ -501,7 +501,7 @@ const DesktopFrame = () => (
             src={`${A}/avatar.png`}
           />
         </div>
-        <div className="relative flex w-[127px] shrink-0 flex-col items-start text-[12px] leading-[1.3] text-white">
+        <div className="relative flex w-31.75 shrink-0 flex-col items-start text-[12px] leading-[1.3] text-white">
           <p className="relative w-full shrink-0 font-bold italic">Sarah Kim</p>
           <p className="relative w-full shrink-0 opacity-70">
             VP People at NovaTech

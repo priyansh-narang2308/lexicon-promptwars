@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { Scale, ArrowRight, Search } from "lucide-react";
 import { ThemeToggle } from "@/components/motion/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/lib/auth-context";
+import { AuthModal } from "@/components/auth-modal";
 
 interface NavbarProps {
   onOpenCommand?: () => void;
@@ -13,6 +15,7 @@ interface NavbarProps {
 export function Navbar({ onOpenCommand }: NavbarProps) {
   const pathname = usePathname();
   const isDashboard = pathname.startsWith("/dashboard");
+  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border/40 bg-background/80 backdrop-blur-md transition-all">
@@ -101,6 +104,26 @@ export function Navbar({ onOpenCommand }: NavbarProps) {
             start="bottom-up"
             className="rounded-lg border border-border bg-background p-2 hover:bg-muted transition-colors cursor-pointer"
             iconClassName="h-4 w-4"
+          />
+
+          {/* User Persona & Auth Trigger */}
+          <AuthModal
+            trigger={
+              user ? (
+                <button
+                  type="button"
+                  className="flex items-center gap-2 px-2.5 py-1 rounded-lg border border-border hover:bg-muted/60 transition-colors text-xs font-medium cursor-pointer"
+                  title="Switch Evaluator Persona"
+                >
+                  <span className="text-base leading-none">{user.avatar}</span>
+                  <span className="hidden lg:inline text-foreground">{user.name.split(" ")[0]}</span>
+                </button>
+              ) : (
+                <Button variant="outline" size="sm" className="cursor-pointer">
+                  Sign In
+                </Button>
+              )
+            }
           />
 
           {!isDashboard ? (

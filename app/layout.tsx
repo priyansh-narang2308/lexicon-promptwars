@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/lib/auth-context";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -9,8 +10,9 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Promptwars",
-  description: "PromptWars: Virtual (Exclusive Edition)",
+  title: "LexFlow AI — Autonomous Legal Intelligence & Contract Risk Studio",
+  description:
+    "AI-powered legal assistance, contract risk intelligence, bilateral redline diffs, and lawyer handoff briefs.",
 };
 
 export default function RootLayout({
@@ -31,7 +33,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </body>
     </html>

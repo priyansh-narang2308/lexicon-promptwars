@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     "AI-powered legal assistance, contract risk intelligence, bilateral redline diffs, and lawyer handoff briefs.",
 };
 
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +37,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <ContractProvider>{children}</ContractProvider>
+            <ContractProvider>
+              <TooltipProvider>{children}</TooltipProvider>
+            </ContractProvider>
           </AuthProvider>
         </ThemeProvider>
       </body>

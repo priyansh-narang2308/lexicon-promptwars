@@ -29,11 +29,11 @@ export function LegalDisclaimerBanner() {
 
   if (dismissed) {
     return (
-      <div className="bg-primary/5 border-b border-primary/10 py-1 px-4 text-xs flex items-center justify-between transition-colors">
-        <div className="flex items-center gap-2 text-muted-foreground mx-auto">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+      <div className="bg-[#0e1014] border-b border-white/10 py-1 px-4 text-xs flex items-center justify-between transition-colors">
+        <div className="flex items-center gap-2 text-white/60 mx-auto">
+          <ShieldCheck className="size-3.5 text-emerald-400" />
           <span>
-            <strong>Legal Assistance Notice:</strong> Informational assistance
+            <strong className="text-white/80">Legal Assistance Notice:</strong> Informational assistance
             only. Not formal attorney legal advice.
           </span>
           <LegalDetailsModal />
@@ -45,13 +45,13 @@ export function LegalDisclaimerBanner() {
   return (
     <aside
       aria-label="Legal Assistance Notice"
-      className="bg-amber-500/10 dark:bg-amber-950/30 border-b border-amber-500/20 px-4 py-2 text-xs text-amber-900 dark:text-amber-200 transition-all"
+      className="bg-[#14110b] border-b border-amber-500/20 px-4 py-1.5 text-xs text-amber-300/90 transition-all"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-          <p className="leading-snug">
-            <strong className="font-semibold">Important Legal Notice:</strong>{" "}
+          <AlertTriangle className="size-3.5 text-amber-400 shrink-0" />
+          <p className="leading-snug text-[11px] sm:text-xs text-amber-200/90">
+            <strong className="font-semibold text-amber-300">Important Legal Notice:</strong>{" "}
             LexFlow AI provides intelligent document analysis and negotiation
             guidance for informational purposes. It does not establish an
             attorney-client relationship.
@@ -61,10 +61,10 @@ export function LegalDisclaimerBanner() {
         <button
           type="button"
           onClick={handleDismiss}
-          className="p-1 hover:bg-amber-500/20 rounded-md transition-colors text-amber-700 dark:text-amber-300"
+          className="p-1 hover:bg-white/10 rounded-md transition-colors text-white/50 hover:text-white cursor-pointer"
           aria-label="Dismiss legal notice"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="size-3.5" />
         </button>
       </div>
     </aside>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 // beui.dev/components/motion/theme-toggle
 

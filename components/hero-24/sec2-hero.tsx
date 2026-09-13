@@ -5,7 +5,7 @@
 import type { ReactNode } from "react";
 import { MediaGlobe } from "./media-globe";
 import { ScaleFrame } from "./scale-frame";
-import { Scale, Sparkles, ArrowRight, ShieldAlert } from "lucide-react";
+import { Sparkles, ArrowRight, ShieldAlert } from "lucide-react";
 
 const A = "/originkit/hero-24";
 
@@ -14,14 +14,6 @@ const HELVETICA = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 const PHONE_QUERY = "(max-width: 639px)";
 const TABLET_QUERY = "(min-width: 640px) and (max-width: 1279px)";
 const DESKTOP_QUERY = "(min-width: 1280px)";
-
-const NAV_LINKS = [
-  { name: "Features", href: "#features" },
-  { name: "Risk Scanner", href: "/dashboard?tab=scanner" },
-  { name: "Redline Diff", href: "/dashboard?tab=compare" },
-  { name: "Attorney Brief", href: "/dashboard?tab=handoff" },
-  { name: "ROI Calculator", href: "#roi" },
-];
 
 const REVEAL = "animate-hero-reveal";
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
@@ -35,7 +27,7 @@ const Backdrop = ({ src, className }: { src: string; className: string }) => (
   />
 );
 
-const GetStartedButton = ({
+const LaunchButton = ({
   className,
   href = "/dashboard",
   text = "Launch Studio Free",
@@ -141,47 +133,19 @@ const GlassCard = ({
 );
 
 const PhoneFrame = () => (
-  <div className="relative h-[836px] w-[402px] overflow-clip">
-    {/* Header */}
-    <div
-      style={delay(0)}
-      className={`${REVEAL} absolute left-0 top-0 flex w-[402px] items-center justify-between border border-solid border-[rgba(255,255,255,0.1)] p-[16px] backdrop-blur-md bg-black/20`}
-    >
-      <a href="/" className="flex items-center gap-2 text-white no-underline">
-        <div className="flex size-7 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 text-white shadow-xs">
-          <Scale className="size-3.5" />
-        </div>
-        <span className="text-[20px] font-bold tracking-tight text-white">
-          LexFlow <span className="text-purple-400">AI</span>
-        </span>
-      </a>
-      <a
-        href="/dashboard"
-        className="text-xs font-semibold px-3 py-1.5 rounded-full bg-purple-600 text-white shadow-xs"
-      >
-        Studio
-      </a>
-    </div>
-
-    {/* Hero Text */}
-    <div className="absolute left-1/2 top-20 flex w-92.5 -translate-x-1/2 flex-col items-center gap-5">
+  <div className="relative h-[800px] w-[402px] overflow-clip">
+    {/* Hero Text - positioned with plenty of breathing room */}
+    <div className="absolute left-1/2 top-6 flex w-92.5 -translate-x-1/2 flex-col items-center gap-4">
       <div className="relative flex w-full shrink-0 flex-col items-center gap-2 text-center text-white">
-        <div
-          style={delay(40)}
-          className={`${REVEAL} inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-[11px] font-medium`}
-        >
-          <Sparkles className="size-3 text-purple-400" />
-          <span>Gemini 2.5 Flash Legal Engine</span>
-        </div>
         <h1
           style={delay(80)}
-          className={`${REVEAL} relative w-[340px] shrink-0 text-[30px] leading-8 font-bold tracking-[-1px]`}
+          className={`${REVEAL} relative w-[340px] shrink-0 text-[28px] leading-8 font-bold tracking-[-1px]`}
         >
           Audit Contracts in Seconds. Spot Predatory Traps.
         </h1>
         <p
           style={delay(160)}
-          className={`${REVEAL} relative w-full shrink-0 text-[13px] leading-relaxed text-[rgba(255,255,255,0.7)]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[12px] leading-relaxed text-[rgba(255,255,255,0.7)]`}
         >
           Autonomous legal intelligence for freelancers & founders. Detect
           hidden landmines, redline bilateral terms, and export 1-page attorney
@@ -192,15 +156,15 @@ const PhoneFrame = () => (
         style={delay(240)}
         className={`${REVEAL} relative flex w-full shrink-0 flex-col items-start justify-center gap-[8px]`}
       >
-        <GetStartedButton
-          className="w-full px-[24px] py-[14px]"
+        <LaunchButton
+          className="w-full px-[24px] py-[13px]"
           text="Launch Studio Free"
         />
         <a
           href="#sandbox"
-          className="relative flex w-full shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 px-[24px] py-[14px] transition-opacity duration-200 hover:opacity-80"
+          className="relative flex w-full shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 px-[24px] py-[13px] transition-opacity duration-200 hover:opacity-80"
         >
-          <p className="relative shrink-0 whitespace-nowrap text-[15px] leading-[1.15] tracking-[-0.32px] text-white">
+          <p className="relative shrink-0 whitespace-nowrap text-[14px] leading-[1.15] tracking-[-0.32px] text-white">
             Explore Live Sandbox
           </p>
         </a>
@@ -210,7 +174,7 @@ const PhoneFrame = () => (
     {/* Globe */}
     <div
       style={delay(320)}
-      className={`${REVEAL} absolute left-[calc(50%+0.5px)] top-[418px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]`}
+      className={`${REVEAL} absolute left-[calc(50%+0.5px)] top-[430px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]`}
     >
       <MediaGlobe query={PHONE_QUERY} />
     </div>
@@ -235,7 +199,7 @@ const PhoneFrame = () => (
 
     {/* Telemetry Card 1 */}
     <GlassCard
-      className="left-[20px] top-[445px] w-[145px] gap-[3px] rounded-[8px] border border-rose-500/30 bg-black/40 p-[12px]"
+      className="left-[15px] top-[460px] w-[145px] gap-[3px] rounded-[8px] border border-rose-500/30 bg-black/50 p-[12px]"
       plate="left-[calc(50%-0.5px)] top-[calc(50%+0.5px)]"
       step={400}
     >
@@ -253,7 +217,7 @@ const PhoneFrame = () => (
 
     {/* Telemetry Card 2: User Testimonial */}
     <GlassCard
-      className="left-[calc(50%+79px)] top-166.75 w-[218px] -translate-x-1/2 gap-[10px] rounded-[8px] border border-purple-500/30 bg-black/40 p-[12px]"
+      className="left-[calc(50%+79px)] top-166.75 w-[218px] -translate-x-1/2 gap-[10px] rounded-[8px] border border-purple-500/30 bg-black/50 p-[12px]"
       plate="left-[calc(50%+25.5px)] top-[calc(50%+4.21px)]"
       step={480}
     >
@@ -277,42 +241,19 @@ const PhoneFrame = () => (
 );
 
 const TabletFrame = () => (
-  <div className="relative h-[994px] w-[744px] overflow-clip">
-    {/* Header */}
-    <div
-      style={delay(0)}
-      className={`${REVEAL} absolute left-0 top-0 flex h-[64px] w-[744px] items-center justify-between border border-solid border-[rgba(255,255,255,0.1)] px-[32px] py-[16px] backdrop-blur-md bg-black/20`}
-    >
-      <a href="/" className="flex items-center gap-2 text-white no-underline">
-        <div className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 text-white shadow-xs">
-          <Scale className="size-4" />
-        </div>
-        <span className="text-[24px] font-bold tracking-tight text-white">
-          LexFlow <span className="text-purple-400">AI</span>
-        </span>
-      </a>
-      <GetStartedButton className="px-[20px] py-[10px]" text="Launch Studio" />
-    </div>
-
-    {/* Hero Text */}
-    <div className="absolute left-[149px] top-[110px] flex w-[446px] flex-col items-center gap-[24px]">
-      <div className="relative flex w-full shrink-0 flex-col items-center gap-[14px] text-center text-white">
-        <div
-          style={delay(40)}
-          className={`${REVEAL} inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-medium`}
-        >
-          <Sparkles className="size-3.5 text-purple-400" />
-          <span>Gemini 2.5 Flash Legal Engine</span>
-        </div>
+  <div className="relative h-[950px] w-[744px] overflow-clip">
+    {/* Hero Text - positioned with ample space */}
+    <div className="absolute left-[149px] top-[40px] flex w-[446px] flex-col items-center gap-[20px]">
+      <div className="relative flex w-full shrink-0 flex-col items-center gap-[12px] text-center text-white">
         <h1
           style={delay(80)}
-          className={`${REVEAL} relative w-full shrink-0 text-[42px] leading-[48px] font-bold tracking-[-1.6px]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[38px] leading-[44px] font-bold tracking-[-1.5px]`}
         >
           Audit Contracts in Seconds. Spot Predatory Traps.
         </h1>
         <p
           style={delay(160)}
-          className={`${REVEAL} relative w-full shrink-0 text-[15px] leading-[1.5] text-[rgba(255,255,255,0.75)]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[14px] leading-[1.5] text-[rgba(255,255,255,0.75)]`}
         >
           The autonomous legal copilot for freelancers, executives, and
           founders. Detect predatory clauses, redline counterparty terms, and
@@ -323,15 +264,15 @@ const TabletFrame = () => (
         style={delay(240)}
         className={`${REVEAL} relative flex shrink-0 items-center gap-[12px]`}
       >
-        <GetStartedButton
-          className="px-[24px] py-[16px]"
+        <LaunchButton
+          className="px-[24px] py-[14px]"
           text="Launch Studio Free"
         />
         <a
           href="#sandbox"
-          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 px-[24px] py-[16px] transition-opacity duration-200 hover:opacity-80"
+          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 px-[22px] py-[14px] transition-opacity duration-200 hover:opacity-80"
         >
-          <p className="relative shrink-0 whitespace-nowrap text-[16px] leading-[1.15] tracking-[-0.32px] text-white">
+          <p className="relative shrink-0 whitespace-nowrap text-[15px] leading-[1.15] tracking-[-0.32px] text-white">
             Live Sandbox
           </p>
         </a>
@@ -341,7 +282,7 @@ const TabletFrame = () => (
     {/* Globe */}
     <div
       style={delay(320)}
-      className={`${REVEAL} absolute left-[163px] top-[430px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}
+      className={`${REVEAL} absolute left-[163px] top-[440px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}
     >
       <MediaGlobe query={TABLET_QUERY} />
     </div>
@@ -366,7 +307,7 @@ const TabletFrame = () => (
 
     {/* Telemetry Card 1 */}
     <GlassCard
-      className="left-[40px] top-[460px] w-[170px] gap-1 rounded-[8px] border border-rose-500/30 bg-black/40 p-4"
+      className="left-[35px] top-[460px] w-[170px] gap-1 rounded-[8px] border border-rose-500/30 bg-black/50 p-4"
       plate="left-1/2 top-1/2"
       step={400}
     >
@@ -384,7 +325,7 @@ const TabletFrame = () => (
 
     {/* Telemetry Card 2 */}
     <GlassCard
-      className="left-[520px] top-[640px] w-[240px] gap-3 rounded-[8px] border border-purple-500/30 bg-black/40 p-3.5"
+      className="left-[520px] top-[640px] w-[240px] gap-3 rounded-[8px] border border-purple-500/30 bg-black/50 p-3.5"
       plate="left-[calc(50%-0.5px)] top-1/2"
       step={480}
     >
@@ -407,56 +348,14 @@ const TabletFrame = () => (
   </div>
 );
 
-const DesktopNav = () => (
-  <div
-    style={delay(0)}
-    className={`${REVEAL} absolute left-0 top-0 z-10 hidden h-[68px] w-full items-center justify-center border-b border-solid border-[rgba(255,255,255,0.1)] px-[64px] py-[16px] desktop-sm:flex backdrop-blur-md bg-black/20`}
-  >
-    <div className="relative flex w-full max-w-300 items-center justify-between">
-      <a
-        href="/"
-        className="relative flex items-center gap-2.5 shrink-0 whitespace-nowrap text-[26px] leading-[1.15] font-bold tracking-[-0.8px] text-white hover:opacity-90 transition-opacity"
-      >
-        <div className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-500/30">
-          <Scale className="size-4.5" />
-        </div>
-        <span>
-          LexFlow <span className="text-purple-400">AI</span>
-        </span>
-      </a>
-
-      <div className="absolute left-1/2 top-[calc(50%-0.5px)] flex -translate-x-1/2 -translate-y-1/2 items-center gap-[28px] whitespace-nowrap text-[15px] font-medium leading-[1.15] text-white/80">
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-purple-300"
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-
-      <GetStartedButton className="px-[22px] py-[12px]" text="Launch Studio" />
-    </div>
-  </div>
-);
-
 const DesktopFrame = () => (
-  <div className="relative h-[913px] w-[1280px] overflow-clip">
-    {/* Hero Main Content */}
-    <div className="absolute left-[417px] top-[125px] flex w-[480px] flex-col items-center gap-[24px]">
-      <div className="relative flex w-full shrink-0 flex-col items-center gap-[14px] text-center text-white">
-        <div
-          style={delay(40)}
-          className={`${REVEAL} inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-medium shadow-xs shadow-purple-500/20`}
-        >
-          <Sparkles className="size-3.5 text-purple-400" />
-          <span>Autonomous Legal Intelligence Studio · Gemini 2.5 Flash</span>
-        </div>
+  <div className="relative h-[890px] w-[1280px] overflow-clip">
+    {/* Hero Main Content - Positioned at top-[36px] so buttons NEVER collide with globe */}
+    <div className="absolute left-[400px] top-[36px] flex w-[480px] flex-col items-center gap-[20px]">
+      <div className="relative flex w-full shrink-0 flex-col items-center gap-[12px] text-center text-white">
         <h1
           style={delay(80)}
-          className={`${REVEAL} relative w-full shrink-0 text-[46px] leading-[52px] font-bold tracking-[-1.8px]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[44px] leading-[50px] font-bold tracking-[-1.8px]`}
         >
           Audit Contracts in Seconds. Spot Predatory Traps.
         </h1>
@@ -473,13 +372,13 @@ const DesktopFrame = () => (
         style={delay(240)}
         className={`${REVEAL} relative flex shrink-0 items-center gap-[14px]`}
       >
-        <GetStartedButton
-          className="px-[26px] py-[15px]"
+        <LaunchButton
+          className="px-[26px] py-[14px]"
           text="Launch Studio Free"
         />
         <a
           href="#sandbox"
-          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 backdrop-blur-md px-[24px] py-[15px] transition-all duration-200 hover:bg-[#252233] hover:border-purple-500/40 text-white"
+          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 backdrop-blur-md px-[24px] py-[14px] transition-all duration-200 hover:bg-[#252233] hover:border-purple-500/40 text-white"
         >
           <p className="relative shrink-0 whitespace-nowrap text-[15px] leading-[1.15] tracking-[-0.32px] text-white/90">
             Explore Live Sandbox
@@ -488,10 +387,10 @@ const DesktopFrame = () => (
       </div>
     </div>
 
-    {/* Globe Component */}
+    {/* Globe Component - Placed at top-[450px] with clear 140px separation from buttons */}
     <div
       style={delay(320)}
-      className={`${REVEAL} absolute left-[431px] top-[430px] h-[430px] w-[428px] overflow-clip rounded-[999px]`}
+      className={`${REVEAL} absolute left-[426px] top-[450px] h-[430px] w-[428px] overflow-clip rounded-[999px]`}
     >
       <MediaGlobe query={DESKTOP_QUERY} />
     </div>
@@ -517,7 +416,7 @@ const DesktopFrame = () => (
 
     {/* Telemetry Card 1 (Left on Globe) */}
     <GlassCard
-      className="left-80 top-120 w-46 gap-1 rounded-[8px] border border-rose-500/30 bg-black/40 p-4 backdrop-blur-md shadow-lg shadow-rose-950/20"
+      className="left-80 top-120 w-46 gap-1 rounded-[8px] border border-rose-500/30 bg-black/50 p-4 backdrop-blur-md shadow-lg shadow-rose-950/20"
       plate="left-1/2 top-1/2"
       step={400}
     >
@@ -535,7 +434,7 @@ const DesktopFrame = () => (
 
     {/* Telemetry Card 2 (Right on Globe) */}
     <GlassCard
-      className="left-200.75 top-165 w-66 gap-3 rounded-[8px] border border-purple-500/30 bg-black/40 p-4 backdrop-blur-md shadow-lg shadow-purple-950/20"
+      className="left-200.75 top-165 w-66 gap-3 rounded-[8px] border border-purple-500/30 bg-black/50 p-4 backdrop-blur-md shadow-lg shadow-purple-950/20"
       plate="left-[calc(50%-0.5px)] top-1/2"
       step={480}
     >
@@ -582,7 +481,6 @@ export const Sec2Hero = () => (
     >
       <TabletFrame />
     </ScaleFrame>
-    <DesktopNav />
     <ScaleFrame
       frameWidth={1280}
       className="relative hidden w-full overflow-hidden desktop-sm:block"

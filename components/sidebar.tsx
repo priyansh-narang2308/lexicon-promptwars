@@ -74,7 +74,7 @@ function GeminiSafetyWidget() {
   return (
     <div
       className={cn(
-        "rounded-xl group/safety size-full min-h-24 justify-center border border-purple-500/20 bg-gradient-to-br from-purple-500/5 via-indigo-500/5 to-transparent",
+        "rounded-xl group/safety size-full min-h-24 justify-center border border-purple-500/20 bg-linear-to-br from-purple-500/5 via-indigo-500/5 to-transparent",
         "relative flex size-full flex-col gap-1 overflow-hidden p-3 *:text-nowrap",
         "transition-opacity group-data-[collapsible=icon]:pointer-events-none group-data-[collapsible=icon]:opacity-0",
       )}
@@ -348,7 +348,7 @@ export function StudioSidebar({
           onClick={() => router.push("/")}
           className="h-10 hover:bg-muted/80 transition-colors"
         >
-          <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 text-white shadow-xs shadow-purple-500/20">
+          <div className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 via-indigo-600 to-blue-600 text-white shadow-xs shadow-purple-500/20">
             <Scale className="size-4" />
           </div>
           <div className="flex flex-col text-left">
@@ -380,7 +380,7 @@ export function StudioSidebar({
                   handleTabClick("scanner");
                 }
               }}
-              className="min-w-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium duration-200 ease-linear hover:from-purple-700 hover:to-indigo-700 hover:text-white shadow-xs shadow-purple-500/20 active:scale-98"
+              className="min-w-8 bg-linear-to-r from-purple-600 to-indigo-600 text-white font-medium duration-200 ease-linear hover:from-purple-700 hover:to-indigo-700 hover:text-white shadow-xs shadow-purple-500/20 active:scale-98"
               tooltip="Analyze Contract"
             >
               <Sparkles className="size-4 shrink-0" />

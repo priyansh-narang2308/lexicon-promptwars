@@ -11,8 +11,8 @@ const A = "/originkit/hero-24";
 const HELVETICA = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 
 const PHONE_QUERY = "(max-width: 639px)";
-const TABLET_QUERY = "(min-width: 640px) and (max-width: 1279px)";
-const DESKTOP_QUERY = "(min-width: 1280px)";
+const TABLET_QUERY = "(min-width: 640px) and (max-width: 1023px)";
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 const REVEAL = "animate-hero-reveal";
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });
@@ -173,8 +173,7 @@ const PhoneFrame = () => (
 
     {/* Globe */}
     <div
-      style={delay(320)}
-      className={`${REVEAL} absolute left-[calc(50%+0.5px)] top-[430px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]`}
+      className="absolute left-[calc(50%+0.5px)] top-[430px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]"
     >
       <MediaGlobe query={PHONE_QUERY} />
     </div>
@@ -281,8 +280,7 @@ const TabletFrame = () => (
 
     {/* Globe */}
     <div
-      style={delay(320)}
-      className={`${REVEAL} absolute left-[163px] top-[440px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}
+      className="absolute left-[163px] top-[440px] h-[420px] w-[418px] overflow-clip rounded-[999px]"
     >
       <MediaGlobe query={TABLET_QUERY} />
     </div>
@@ -389,8 +387,7 @@ const DesktopFrame = () => (
 
     {/* Globe Component - Placed at top-[410px] with clear 130px separation from buttons */}
     <div
-      style={delay(320)}
-      className={`${REVEAL} absolute left-[426px] top-[410px] h-[430px] w-[428px] overflow-clip rounded-[999px]`}
+      className="absolute left-[426px] top-[410px] h-[430px] w-[428px] overflow-clip rounded-[999px]"
     >
       <MediaGlobe query={DESKTOP_QUERY} />
     </div>
@@ -465,9 +462,9 @@ export const Sec2Hero = () => (
     <Backdrop src="bg.png" className="min-[640px]:hidden" />
     <Backdrop
       src="bg-ipad.png"
-      className="hidden min-[640px]:block desktop-sm:hidden"
+      className="hidden min-[640px]:block min-[1024px]:hidden"
     />
-    <Backdrop src="bg-desktop.png" className="hidden desktop-sm:block" />
+    <Backdrop src="bg-desktop.png" className="hidden min-[1024px]:block" />
 
     <ScaleFrame
       frameWidth={402}
@@ -477,13 +474,13 @@ export const Sec2Hero = () => (
     </ScaleFrame>
     <ScaleFrame
       frameWidth={744}
-      className="relative hidden w-full overflow-hidden min-[640px]:block desktop-sm:hidden"
+      className="relative hidden w-full overflow-hidden min-[640px]:block min-[1024px]:hidden"
     >
       <TabletFrame />
     </ScaleFrame>
     <ScaleFrame
       frameWidth={1280}
-      className="relative hidden w-full overflow-hidden desktop-sm:block"
+      className="relative hidden w-full overflow-hidden min-[1024px]:block"
     >
       <DesktopFrame />
     </ScaleFrame>

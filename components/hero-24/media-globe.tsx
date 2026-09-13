@@ -1,19 +1,23 @@
 "use client";
 
-"use client";
-
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Globe from "./globe";
 
 const ACCENT = "#00A1DB";
+const DOTS_CONFIG = { color: ACCENT, size: 5, density: 8, allDots: false } as const;
+const GLOBE_STYLE: React.CSSProperties = { width: "100%", height: "100%" };
 
 export const MediaGlobe = ({ query }: { query: string }) => {
-  const [matches, setMatches] = useState(false);
+  const [matches, setMatches] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia(query).matches;
+    }
+    return true;
+  });
 
   useEffect(() => {
     const mql = window.matchMedia(query);
     const update = () => setMatches(mql.matches);
-    update();
     mql.addEventListener("change", update);
     return () => mql.removeEventListener("change", update);
   }, [query]);
@@ -27,13 +31,13 @@ export const MediaGlobe = ({ query }: { query: string }) => {
       initialLatitude={23}
       initialLongitude={-23}
       fill="dots"
-      dots={{ color: ACCENT, size: 5, density: 8, allDots: false }}
+      dots={DOTS_CONFIG}
       showOutline
       outlineColor={ACCENT}
       showGrid
       graticuleColor={ACCENT}
       oceanColor="#101216"
-      style={{ width: "100%", height: "100%" }}
+      style={GLOBE_STYLE}
     />
   );
 };

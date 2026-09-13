@@ -192,6 +192,31 @@ interface GlobeProps {
   style?: CSSProperties;
 }
 
+let cachedLandFeatures: any = null;
+let landFeaturesPromise: Promise<any> | null = null;
+
+async function getLandFeatures() {
+  if (cachedLandFeatures) return cachedLandFeatures;
+  if (!landFeaturesPromise) {
+    landFeaturesPromise = fetch(
+      "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json",
+    )
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load land data");
+        return res.json();
+      })
+      .then((data) => {
+        cachedLandFeatures = data;
+        return data;
+      })
+      .catch((err) => {
+        landFeaturesPromise = null;
+        throw err;
+      });
+  }
+  return landFeaturesPromise;
+}
+
 export default function Globe({
   speed = 2,
   smoothing = 8,
@@ -215,7 +240,6 @@ export default function Globe({
   style,
 }: GlobeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const dotColor = dots.color;
@@ -429,12 +453,7 @@ export default function Globe({
 
     const loadWorldData = async () => {
       try {
-        setIsLoading(true);
-        const response = await fetch(
-          "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json",
-        );
-        if (!response.ok) throw new Error("Failed to load land data");
-        const landFeatures = await response.json();
+        const landFeatures = await getLandFeatures();
 
         while (continentOutlineGroup.children.length > 0) {
           continentOutlineGroup.remove(continentOutlineGroup.children[0]);
@@ -671,10 +690,8 @@ export default function Globe({
         renderer.render(scene, camera);
         canvas.style.opacity = "1";
         canvas.style.visibility = "visible";
-        setIsLoading(false);
       } catch {
         setError("Failed to load land map data");
-        setIsLoading(false);
       }
     };
 
@@ -872,8 +889,7 @@ export default function Globe({
     };
   }, [
     speed,
-    smoothing,
-    dots,
+    smoothingN,
     fill,
     fillColor,
     allDots,
@@ -882,7 +898,6 @@ export default function Globe({
     dotColor,
     scale,
     stopOnHover,
-    markerConfig,
     direction,
     initialLatitude,
     initialLongitude,

@@ -5,18 +5,9 @@ import { ComparisonSlider } from "@/components/landing/comparison-slider";
 import { RoiCalculator } from "@/components/landing/roi-calculator";
 import { SocialProof } from "@/components/landing/social-proof";
 import { LandingFooter } from "@/components/landing/footer";
-import { Navbar } from "@/components/navbar";
-import { LegalDisclaimerBanner } from "@/components/legal-disclaimer";
-
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground selection:bg-purple-500 selection:text-white">
-      {/* Ethical Legal Notice Banner */}
-      <LegalDisclaimerBanner />
-
-      {/* Main Landing Navbar with Theme Toggle, Persona Chip, and CommandMenu Search */}
-      <Navbar />
-
       {/* Landing Page Content Stack */}
       <main className="flex-1 flex flex-col">
         {/* Task 13: 3D Rotating Globe Hero */}

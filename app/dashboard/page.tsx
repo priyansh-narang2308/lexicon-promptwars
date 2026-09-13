@@ -26,6 +26,7 @@ import {
   CustomSidebarTrigger,
 } from "@/components/sidebar";
 import { RiskScoreGauge } from "@/components/modules/risk-score-gauge";
+import { RiskDistributionChart } from "@/components/modules/risk-distribution-chart";
 import { ContractUploaderDialog } from "@/components/contract-uploader";
 import { CommandMenu } from "@/components/command-menu";
 import { AuthModal } from "@/components/auth-modal";
@@ -56,6 +57,7 @@ function DashboardContent() {
 
   const [isUploaderOpen, setIsUploaderOpen] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Sync URL search params
   useEffect(() => {
@@ -113,7 +115,7 @@ function DashboardContent() {
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-2 rounded-lg border border-border/60 bg-muted/40 px-2.5 py-1 text-xs font-medium hover:bg-muted transition-colors cursor-pointer">
                 <FileText className="size-3.5 text-purple-600 dark:text-purple-400" />
-                <span className="font-semibold text-foreground max-w-[180px] sm:max-w-[280px] truncate">
+                <span className="font-semibold text-foreground max-w-45 sm:max-w-70 truncate">
                   {activeContract?.title || "Custom Upload"}
                 </span>
                 <ChevronDown className="size-3 text-muted-foreground opacity-70" />
@@ -283,7 +285,7 @@ function DashboardContent() {
                 className={cn(
                   "flex shrink-0 items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-all cursor-pointer",
                   isActive
-                    ? "bg-card text-foreground shadow-xs border border-border font-semibold text-purple-600 dark:text-purple-400"
+                    ? "bg-card text-foreground shadow-xs border border-border font-semibold dark:text-purple-400"
                     : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
                 )}
               >
@@ -485,13 +487,20 @@ function DashboardContent() {
                 </div>
               </div>
 
-              {/* Seamless Roadmap Slots for Upcoming Pillar 1 Tasks (Tasks 21–26) */}
+              {/* Task 21: Recharts Risk Category & Severity Distribution */}
+              <RiskDistributionChart
+                clauses={currentAnalysis?.clauses}
+                selectedCategory={selectedCategory}
+                onSelectCategory={setSelectedCategory}
+              />
+
+              {/* Seamless Roadmap Slots for Upcoming Pillar 1 Tasks (Tasks 22–26) */}
               <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                   <div>
                     <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
                       <Layers className="size-4 text-purple-500" />
-                      <span>Next Up in Risk Scanner: Tasks 21–26</span>
+                      <span>Next Up in Risk Scanner: Tasks 22–26</span>
                     </h3>
                     <p className="text-xs text-muted-foreground mt-0.5">
                       Executing subsequent roadmap tasks sequentially with full
@@ -499,7 +508,7 @@ function DashboardContent() {
                     </p>
                   </div>
                   <span className="text-[11px] font-mono text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20 self-start sm:self-auto">
-                    Task 20 Active & Verified
+                    Tasks 20 & 21 Active & Verified
                   </span>
                 </div>
 
@@ -507,28 +516,10 @@ function DashboardContent() {
                   <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
                     <div className="flex items-center justify-between text-muted-foreground">
                       <span className="font-semibold text-foreground">
-                        Task 21
-                      </span>
-                      <span className="text-[10px] font-mono uppercase bg-muted px-1.5 py-0.5 rounded">
-                        Next
-                      </span>
-                    </div>
-                    <div className="font-medium text-xs mt-1">
-                      Recharts Category & Severity Distribution
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">
-                      Interactive donut and bar breakdown for IP, Liability, and
-                      Payment risks.
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
-                    <div className="flex items-center justify-between text-muted-foreground">
-                      <span className="font-semibold text-foreground">
                         Task 22
                       </span>
-                      <span className="text-[10px] font-mono uppercase bg-muted px-1.5 py-0.5 rounded">
-                        Queued
+                      <span className="text-[10px] font-mono uppercase bg-purple-500/15 text-purple-600 dark:text-purple-400 font-bold px-1.5 py-0.5 rounded">
+                        Next
                       </span>
                     </div>
                     <div className="font-medium text-xs mt-1">
@@ -537,6 +528,24 @@ function DashboardContent() {
                     <p className="text-[11px] text-muted-foreground mt-1">
                       High-visibility alert banners targeting 2-year non-compete
                       and IP forfeiture.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
+                    <div className="flex items-center justify-between text-muted-foreground">
+                      <span className="font-semibold text-foreground">
+                        Task 23
+                      </span>
+                      <span className="text-[10px] font-mono uppercase bg-muted px-1.5 py-0.5 rounded">
+                        Queued
+                      </span>
+                    </div>
+                    <div className="font-medium text-xs mt-1">
+                      Market Fairness Benchmark Card
+                    </div>
+                    <p className="text-[11px] text-muted-foreground mt-1">
+                      Standard commercial comparison with outlier scoring and
+                      industry percentiles.
                     </p>
                   </div>
 

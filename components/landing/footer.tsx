@@ -95,30 +95,7 @@ export function LandingFooter() {
             </ul>
           </div>
 
-          {/* Col 4: Engine & System */}
-          <div className="space-y-3">
-            <p className="text-xs font-bold uppercase tracking-wider text-foreground">
-              Architecture & Engine
-            </p>
-            <ul className="space-y-2 text-xs text-muted-foreground">
-              <li className="flex items-center gap-1.5">
-                <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="font-mono">Google Gemini 2.5 Flash</span>
-              </li>
-              <li>
-                <span className="font-mono">Next.js 16.3 + Turbopack</span>
-              </li>
-              <li>
-                <span className="font-mono">Tailwind CSS v4 + Base UI</span>
-              </li>
-              <li>
-                <span className="font-mono">Zero Hallucination Grounding</span>
-              </li>
-              <li>
-                <span className="font-mono">Repo Footprint: &lt; 10 MB</span>
-              </li>
-            </ul>
-          </div>
+
         </div>
 
         {/* Ethical Legal Notice Statement */}

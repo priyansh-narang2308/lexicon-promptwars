@@ -25,9 +25,19 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+const defaultPersona = USER_PERSONAS[0];
+const defaultInitialUser: AuthUser = {
+  id: defaultPersona.id,
+  name: defaultPersona.name,
+  email: "alex.chen@freelance.design",
+  role: defaultPersona.role,
+  avatar: defaultPersona.avatar,
+  personaId: defaultPersona.id,
+};
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<AuthUser | null>(defaultInitialUser);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     try {

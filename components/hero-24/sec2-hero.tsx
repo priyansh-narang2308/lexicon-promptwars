@@ -1,10 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { MediaGlobe } from "./media-globe";
 import { ScaleFrame } from "./scale-frame";
-import { ArrowRight, ShieldAlert } from "lucide-react";
+import { ArrowRight, ShieldAlert, Scale, Search } from "lucide-react";
+import { ThemeToggle } from "@/components/motion/theme-toggle";
+import { AuthModal } from "@/components/auth-modal";
+import { useAuth } from "@/lib/auth-context";
+import { CommandMenu } from "@/components/command-menu";
+import { LegalDisclaimerBanner } from "@/components/legal-disclaimer";
 
 const A = "/originkit/hero-24";
 
@@ -13,6 +18,14 @@ const HELVETICA = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 const PHONE_QUERY = "(max-width: 639px)";
 const TABLET_QUERY = "(min-width: 640px) and (max-width: 1023px)";
 const DESKTOP_QUERY = "(min-width: 1024px)";
+
+const NAV_LINKS = [
+  { name: "Features", href: "#features" },
+  { name: "Live Sandbox", href: "#sandbox" },
+  { name: "Risk Scanner", href: "/dashboard?tab=scanner" },
+  { name: "Redline Diff", href: "/dashboard?tab=compare" },
+  { name: "ROI Calculator", href: "#calculator" },
+];
 
 const REVEAL = "animate-hero-reveal";
 const delay = (ms: number) => ({ animationDelay: `${ms}ms` });

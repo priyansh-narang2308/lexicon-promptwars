@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import Link from "next/link";
 import { MediaGlobe } from "./media-globe";
 import { ScaleFrame } from "./scale-frame";
 import { ArrowRight, ShieldAlert, Scale, Search } from "lucide-react";
@@ -144,6 +145,102 @@ const GlassCard = ({
     {children}
   </div>
 );
+
+const DesktopNav = ({ onOpenCommand }: { onOpenCommand: () => void }) => {
+  const { user } = useAuth();
+
+  return (
+    <div
+      style={delay(0)}
+      className="sticky top-0 z-30 hidden h-[76px] w-full items-center justify-center border-b border-solid border-white/10 px-[48px] min-[1024px]:flex backdrop-blur-xl bg-[#101216]/90"
+    >
+      <div className="relative flex w-full max-w-7xl items-center justify-between">
+        {/* Brand Logo */}
+        <Link
+          href="/"
+          className="relative flex items-center gap-2.5 shrink-0 whitespace-nowrap text-[22px] leading-[1.15] font-bold tracking-tight text-white hover:opacity-90 transition-opacity"
+        >
+          <div className="flex size-8 items-center justify-center rounded-lg bg-linear-to-br from-purple-600 via-indigo-600 to-blue-600 p-0.5 shadow-md shadow-purple-500/30">
+            <div className="size-full bg-[#101216] rounded-[6px] flex items-center justify-center">
+              <Scale className="size-4.5 text-purple-400" />
+            </div>
+          </div>
+          <span className="font-sans flex items-center gap-1.5 font-bold text-white">
+            LexFlow{" "}
+            <span className="text-[10px] font-semibold tracking-wider px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+              AI
+            </span>
+          </span>
+        </Link>
+
+        {/* Centered Navigation Links */}
+        <div className="absolute left-1/2 top-[calc(50%-0.5px)] flex -translate-x-1/2 -translate-y-1/2 items-center gap-6 whitespace-nowrap text-[14px] font-medium leading-[1.15] text-white/75">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="relative shrink-0 cursor-pointer transition-colors duration-200 hover:text-white"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Right Controls */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onOpenCommand}
+            className="hidden sm:flex items-center gap-2 text-xs text-white/70 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+            aria-label="Open command palette"
+          >
+            <Search className="size-3.5" />
+            <span>Search</span>
+            <kbd className="pointer-events-none inline-flex h-4.5 select-none items-center gap-1 rounded border border-white/20 bg-white/10 px-1.5 font-mono text-[10px] font-medium text-white/80">
+              ⌘K
+            </kbd>
+          </button>
+
+          <ThemeToggle
+            variant="rectangle"
+            start="bottom-up"
+            className="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10 transition-colors cursor-pointer text-white"
+            iconClassName="size-4"
+          />
+
+          <AuthModal
+            trigger={
+              user ? (
+                <button
+                  type="button"
+                  className="flex items-center gap-2 px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-xs font-medium cursor-pointer text-white"
+                  title="Switch Evaluator Persona"
+                >
+                  <span className="text-base leading-none">{user.avatar}</span>
+                  <span className="hidden xl:inline text-white/90">
+                    {user.name.split(" ")[0]}
+                  </span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="text-xs text-white/80 hover:text-white px-2 py-1 cursor-pointer"
+                >
+                  Sign In
+                </button>
+              )
+            }
+          />
+
+          <LaunchButton
+            className="px-[20px] py-[10px]"
+            text="Launch Studio"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const PhoneFrame = () => (
   <div className="relative h-[800px] w-[402px] overflow-clip">
@@ -467,35 +564,46 @@ const DesktopFrame = () => (
   </div>
 );
 
-export const Sec2Hero = () => (
-  <main
-    className="relative w-full overflow-hidden bg-[#101216]"
-    style={{ fontFamily: HELVETICA }}
-  >
-    <Backdrop src="bg.png" className="min-[640px]:hidden" />
-    <Backdrop
-      src="bg-ipad.png"
-      className="hidden min-[640px]:block min-[1024px]:hidden"
-    />
-    <Backdrop src="bg-desktop.png" className="hidden min-[1024px]:block" />
+export const Sec2Hero = () => {
+  const [commandOpen, setCommandOpen] = useState(false);
 
-    <ScaleFrame
-      frameWidth={402}
-      className="relative w-full overflow-hidden min-[640px]:hidden"
+  return (
+    <main
+      className="relative w-full overflow-hidden bg-[#101216]"
+      style={{ fontFamily: HELVETICA }}
     >
-      <PhoneFrame />
-    </ScaleFrame>
-    <ScaleFrame
-      frameWidth={744}
-      className="relative hidden w-full overflow-hidden min-[640px]:block min-[1024px]:hidden"
-    >
-      <TabletFrame />
-    </ScaleFrame>
-    <ScaleFrame
-      frameWidth={1280}
-      className="relative hidden w-full overflow-hidden min-[1024px]:block"
-    >
-      <DesktopFrame />
-    </ScaleFrame>
-  </main>
-);
+      <LegalDisclaimerBanner />
+      <Backdrop src="bg.png" className="min-[640px]:hidden" />
+      <Backdrop
+        src="bg-ipad.png"
+        className="hidden min-[640px]:block min-[1024px]:hidden"
+      />
+      <Backdrop src="bg-desktop.png" className="hidden min-[1024px]:block" />
+
+      {/* OriginKit Navbar Modified with LexFlow controls */}
+      <DesktopNav onOpenCommand={() => setCommandOpen(true)} />
+
+      <ScaleFrame
+        frameWidth={402}
+        className="relative w-full overflow-hidden min-[640px]:hidden"
+      >
+        <PhoneFrame />
+      </ScaleFrame>
+      <ScaleFrame
+        frameWidth={744}
+        className="relative hidden w-full overflow-hidden min-[640px]:block min-[1024px]:hidden"
+      >
+        <TabletFrame />
+      </ScaleFrame>
+      <ScaleFrame
+        frameWidth={1280}
+        className="relative hidden w-full overflow-hidden min-[1024px]:block"
+      >
+        <DesktopFrame />
+      </ScaleFrame>
+
+      {/* Global ⌘K Command Palette */}
+      <CommandMenu open={commandOpen} onOpenChange={setCommandOpen} />
+    </main>
+  );
+};

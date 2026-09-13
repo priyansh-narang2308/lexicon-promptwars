@@ -284,7 +284,7 @@ export function ContractUploader({
                   <option value="employment">Employment & Non-Compete</option>
                   <option value="saas">Enterprise SaaS / B2B</option>
                   <option value="nda">Mutual Non-Disclosure (NDA)</option>
-                  <option value="custom">General Commercial / Custom</option>
+                  <option value="general">General Commercial / Custom</option>
                 </select>
               </div>
             </div>

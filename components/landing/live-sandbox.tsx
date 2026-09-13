@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import {
   Sparkles,
   ShieldAlert,
@@ -10,7 +10,6 @@ import {
   Volume2,
   VolumeX,
   RotateCcw,
-  Scale,
   Zap,
   CheckCircle2,
   FileCode2,
@@ -118,7 +117,6 @@ export function LiveSandbox() {
   const [inputText, setInputText] = useState(SANDBOX_PRESETS[0].legalese);
   const [copied, setCopied] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [isPending, startTransition] = useTransition();
 
   const handleSelectPreset = (preset: SandboxScenario) => {
     setSelectedPreset(preset);

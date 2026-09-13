@@ -11,7 +11,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "LexFlow AI — Autonomous Legal Intelligence & Contract Risk Studio",
+  title: "LexFlow AI - Autonomous Legal Intelligence & Contract Risk Studio",
   description:
     "AI-powered legal assistance, contract risk intelligence, bilateral redline diffs, and lawyer handoff briefs.",
 };

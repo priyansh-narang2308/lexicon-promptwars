@@ -423,6 +423,7 @@ function generateDynamicFallbackAnalysis(
   let score = 48;
   if (hasNonCompete) score += 20;
   if (hasIndemnity) score += 15;
+  if (hasTermination) score += 5;
   if (hasIp) score += 10;
   if (lower.includes("unlimited") || lower.includes("perpetual")) score += 10;
   score = Math.min(score, 94);

@@ -266,8 +266,8 @@ export default function Globe({
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     canvas.style.display = "block";
-    canvas.style.opacity = "0";
-    canvas.style.visibility = "hidden";
+    canvas.style.opacity = "1";
+    canvas.style.visibility = "visible";
     container.appendChild(canvas);
 
     const resolvedOceanColor = oceanColor;
@@ -737,6 +737,7 @@ export default function Globe({
     }
     globeGroup.add(continentOutlineGroup);
     markerMeshes.forEach((mesh) => globeGroup.add(mesh));
+    renderer.render(scene, camera);
 
     const animate = () => {
       let needsRender = false;

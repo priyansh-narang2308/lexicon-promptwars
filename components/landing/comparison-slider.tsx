@@ -7,16 +7,11 @@ import {
   CheckCircle2,
   Clock,
   DollarSign,
-  ShieldAlert,
-  ArrowRight,
   Split,
-  Eye,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function ComparisonSlider() {
   const [sliderPos, setSliderPos] = useState(50); // 0 to 100 percentage
-  const [isDragging, setIsDragging] = useState(false);
 
   return (
     <section className="relative w-full py-24 px-4 sm:px-6 lg:px-8 bg-muted/20 border-t border-border/70 overflow-hidden">

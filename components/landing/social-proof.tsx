@@ -7,10 +7,7 @@ import {
   Cpu,
   FileCheck,
   Star,
-  Sparkles,
-  Award,
 } from "lucide-react";
-import { USER_PERSONAS } from "@/lib/contracts-data";
 
 export function SocialProof() {
   const securityPillars = [

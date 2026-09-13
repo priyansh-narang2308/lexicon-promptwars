@@ -7,18 +7,11 @@ import {
   MessageSquareText,
   PenTool,
   FileText,
-  CheckSquare,
   Sparkles,
   ArrowRight,
-  TrendingUp,
-  Clock,
-  ShieldCheck,
   CheckCircle2,
-  AlertTriangle,
-  FileCode2,
 } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export function BentoGrid() {
   return (

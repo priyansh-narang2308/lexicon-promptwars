@@ -1,11 +1,10 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
 import type { ReactNode } from "react";
 import { MediaGlobe } from "./media-globe";
 import { ScaleFrame } from "./scale-frame";
-import { Sparkles, ArrowRight, ShieldAlert } from "lucide-react";
+import { ArrowRight, ShieldAlert } from "lucide-react";
 
 const A = "/originkit/hero-24";
 
@@ -118,7 +117,8 @@ const GlassCard = ({
   children: ReactNode;
 }) => (
   <div
-    className={`absolute flex flex-col items-start overflow-clip border-solid border-[rgba(255,255,255,0.15)] backdrop-blur-md ${className}`}
+    style={delay(step)}
+    className={`absolute ${REVEAL} flex flex-col items-start overflow-clip border-solid border-[rgba(255,255,255,0.15)] backdrop-blur-md ${className}`}
   >
     <div
       className={`absolute h-[166px] w-[301px] -translate-x-1/2 -translate-y-1/2 blur-[20px] ${plate}`}
@@ -350,12 +350,12 @@ const TabletFrame = () => (
 
 const DesktopFrame = () => (
   <div className="relative h-[890px] w-[1280px] overflow-clip">
-    {/* Hero Main Content - Positioned at top-[36px] so buttons NEVER collide with globe */}
-    <div className="absolute left-[400px] top-[36px] flex w-[480px] flex-col items-center gap-[20px]">
+    {/* Hero Main Content - Positioned at top-[44px] with 130px clearance before the globe */}
+    <div className="absolute left-[400px] top-[44px] flex w-[480px] flex-col items-center gap-[18px]">
       <div className="relative flex w-full shrink-0 flex-col items-center gap-[12px] text-center text-white">
         <h1
           style={delay(80)}
-          className={`${REVEAL} relative w-full shrink-0 text-[44px] leading-[50px] font-bold tracking-[-1.8px]`}
+          className={`${REVEAL} relative w-full shrink-0 text-[42px] leading-[48px] font-bold tracking-[-1.8px]`}
         >
           Audit Contracts in Seconds. Spot Predatory Traps.
         </h1>
@@ -373,12 +373,12 @@ const DesktopFrame = () => (
         className={`${REVEAL} relative flex shrink-0 items-center gap-[14px]`}
       >
         <LaunchButton
-          className="px-[26px] py-[14px]"
+          className="px-[26px] py-[13px]"
           text="Launch Studio Free"
         />
         <a
           href="#sandbox"
-          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 backdrop-blur-md px-[24px] py-[14px] transition-all duration-200 hover:bg-[#252233] hover:border-purple-500/40 text-white"
+          className="relative flex shrink-0 cursor-pointer items-center justify-center rounded-[999px] border border-solid border-[rgba(255,255,255,0.15)] bg-[#1e1c29]/80 backdrop-blur-md px-[24px] py-[13px] transition-all duration-200 hover:bg-[#252233] hover:border-purple-500/40 text-white"
         >
           <p className="relative shrink-0 whitespace-nowrap text-[15px] leading-[1.15] tracking-[-0.32px] text-white/90">
             Explore Live Sandbox
@@ -387,10 +387,10 @@ const DesktopFrame = () => (
       </div>
     </div>
 
-    {/* Globe Component - Placed at top-[450px] with clear 140px separation from buttons */}
+    {/* Globe Component - Placed at top-[410px] with clear 130px separation from buttons */}
     <div
       style={delay(320)}
-      className={`${REVEAL} absolute left-[426px] top-[450px] h-[430px] w-[428px] overflow-clip rounded-[999px]`}
+      className={`${REVEAL} absolute left-[426px] top-[410px] h-[430px] w-[428px] overflow-clip rounded-[999px]`}
     >
       <MediaGlobe query={DESKTOP_QUERY} />
     </div>
@@ -414,9 +414,9 @@ const DesktopFrame = () => (
       step={440}
     />
 
-    {/* Telemetry Card 1 (Left on Globe) */}
+    {/* Telemetry Card 1 (Left of Globe) */}
     <GlassCard
-      className="left-80 top-120 w-46 gap-1 rounded-[8px] border border-rose-500/30 bg-black/50 p-4 backdrop-blur-md shadow-lg shadow-rose-950/20"
+      className="left-[240px] top-[460px] w-[185px] gap-1 rounded-[10px] border border-rose-500/30 bg-[#0d0f14]/85 p-4 backdrop-blur-md shadow-xl shadow-rose-950/30 z-20"
       plate="left-1/2 top-1/2"
       step={400}
     >
@@ -432,9 +432,9 @@ const DesktopFrame = () => (
       </p>
     </GlassCard>
 
-    {/* Telemetry Card 2 (Right on Globe) */}
+    {/* Telemetry Card 2 (Right of Globe) */}
     <GlassCard
-      className="left-200.75 top-165 w-66 gap-3 rounded-[8px] border border-purple-500/30 bg-black/50 p-4 backdrop-blur-md shadow-lg shadow-purple-950/20"
+      className="left-[835px] top-[480px] w-[270px] gap-3 rounded-[10px] border border-purple-500/30 bg-[#0d0f14]/85 p-4 backdrop-blur-md shadow-xl shadow-purple-950/30 z-20"
       plate="left-[calc(50%-0.5px)] top-1/2"
       step={480}
     >

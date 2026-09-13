@@ -84,7 +84,12 @@ export const ScaleFrame = ({
   return (
     <>
       {}
-      <div ref={outerRef} id={id} className={className} suppressHydrationWarning>
+      <div
+        ref={outerRef}
+        id={id}
+        className={className}
+        suppressHydrationWarning
+      >
         <div
           ref={innerRef}
           suppressHydrationWarning
@@ -100,7 +105,9 @@ export const ScaleFrame = ({
         </div>
       </div>
       {!measured && (
-        <script dangerouslySetInnerHTML={{ __html: inlineScale(id, frameWidth) }} />
+        <script
+          dangerouslySetInnerHTML={{ __html: inlineScale(id, frameWidth) }}
+        />
       )}
     </>
   );

@@ -3,7 +3,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Globe from "@/components/originkit/ui/hero-24/globe";
+import Globe from "./globe";
 
 const ACCENT = "#00A1DB";
 

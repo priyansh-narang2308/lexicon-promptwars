@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -670,7 +672,7 @@ export default function Globe({
         canvas.style.opacity = "1";
         canvas.style.visibility = "visible";
         setIsLoading(false);
-      } catch (err) {
+      } catch {
         setError("Failed to load land map data");
         setIsLoading(false);
       }

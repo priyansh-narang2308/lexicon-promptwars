@@ -1,10 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 "use client";
 
 import type { ReactNode } from "react";
-import { MediaGlobe } from "@/components/originkit/ui/hero-24/media-globe";
-import { ScaleFrame } from "@/components/originkit/ui/hero-24/scale-frame";
+import { MediaGlobe } from "./media-globe";
+import { ScaleFrame } from "./scale-frame";
 
 const A = "/originkit/hero-24";
 
@@ -89,7 +90,11 @@ const HandCutout = ({
     }}
   >
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <img alt="" className={`absolute max-w-none ${image}`} src={`${A}/hands.png`} />
+      <img
+        alt=""
+        className={`absolute max-w-none ${image}`}
+        src={`${A}/hands.png`}
+      />
     </div>
   </div>
 );
@@ -122,18 +127,24 @@ const GlassCard = ({
 
 const PhoneFrame = () => (
   <div className="relative h-[836px] w-[402px] overflow-clip">
-
     {}
     <div
       style={delay(0)}
       className={`${REVEAL} absolute left-0 top-0 flex w-[402px] items-center justify-center border border-solid border-[rgba(255,255,255,0.1)] p-[16px]`}
     >
       <div className="relative flex min-w-px flex-[1_0_0] items-center justify-between">
-        <a href="#home" className="relative shrink-0 whitespace-nowrap text-[22px] leading-[1.15] tracking-[-0.66px] text-white">
+        <a
+          href="#home"
+          className="relative shrink-0 whitespace-nowrap text-[22px] leading-[1.15] tracking-[-0.66px] text-white"
+        >
           Hirefy
         </a>
         <div className="relative size-[24px] shrink-0 cursor-pointer transition-opacity duration-200 hover:opacity-70">
-          <img alt="Menu" className="absolute inset-0 block size-full max-w-none" src={`${A}/menu.svg`} />
+          <img
+            alt="Menu"
+            className="absolute inset-0 block size-full max-w-none"
+            src={`${A}/menu.svg`}
+          />
         </div>
       </div>
     </div>
@@ -151,8 +162,8 @@ const PhoneFrame = () => (
           style={delay(160)}
           className={`${REVEAL} relative w-full shrink-0 text-[14px] leading-[1.5] text-[rgba(255,255,255,0.7)]`}
         >
-          Hire exceptional talent across 180+ countries, automate compliance, and manage
-          international payroll.
+          Hire exceptional talent across 180+ countries, automate compliance,
+          and manage international payroll.
         </p>
       </div>
       <div
@@ -172,7 +183,10 @@ const PhoneFrame = () => (
     </div>
 
     {}
-    <div style={delay(320)} className={`${REVEAL} absolute left-[calc(50%+0.5px)] top-[418px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]`}>
+    <div
+      style={delay(320)}
+      className={`${REVEAL} absolute left-[calc(50%+0.5px)] top-[418px] h-[324px] w-[323px] -translate-x-1/2 overflow-clip rounded-[999px]`}
+    >
       <MediaGlobe query={PHONE_QUERY} />
     </div>
 
@@ -229,7 +243,9 @@ const PhoneFrame = () => (
         </div>
         <div className="relative flex min-w-px flex-[1_0_0] flex-col items-start text-[11px] leading-[1.3] text-white">
           <p className="relative w-full shrink-0 font-bold italic">Sarah Kim</p>
-          <p className="relative w-full shrink-0 opacity-70">VP People at NovaTech</p>
+          <p className="relative w-full shrink-0 opacity-70">
+            VP People at NovaTech
+          </p>
         </div>
       </div>
     </GlassCard>
@@ -238,18 +254,24 @@ const PhoneFrame = () => (
 
 const TabletFrame = () => (
   <div className="relative h-[994px] w-[744px] overflow-clip">
-
     {}
     <div
       style={delay(0)}
       className={`${REVEAL} absolute left-0 top-0 flex h-[64px] w-[744px] items-center justify-center border border-solid border-[rgba(255,255,255,0.1)] px-[32px] py-[16px]`}
     >
       <div className="relative flex min-w-px flex-[1_0_0] items-center justify-between">
-        <a href="#home" className="relative shrink-0 whitespace-nowrap text-[28px] leading-[1.15] tracking-[-0.84px] text-white">
+        <a
+          href="#home"
+          className="relative shrink-0 whitespace-nowrap text-[28px] leading-[1.15] tracking-[-0.84px] text-white"
+        >
           Hirefy
         </a>
         <div className="relative size-[24px] shrink-0 cursor-pointer transition-opacity duration-200 hover:opacity-70">
-          <img alt="Menu" className="absolute inset-0 block size-full max-w-none" src={`${A}/menu.svg`} />
+          <img
+            alt="Menu"
+            className="absolute inset-0 block size-full max-w-none"
+            src={`${A}/menu.svg`}
+          />
         </div>
       </div>
     </div>
@@ -267,8 +289,8 @@ const TabletFrame = () => (
           style={delay(160)}
           className={`${REVEAL} relative w-full shrink-0 text-[16px] leading-[1.5] text-[rgba(255,255,255,0.7)]`}
         >
-          Hire exceptional talent across 180+ countries, automate compliance, and manage
-          international payroll.
+          Hire exceptional talent across 180+ countries, automate compliance,
+          and manage international payroll.
         </p>
       </div>
       <div
@@ -288,7 +310,10 @@ const TabletFrame = () => (
     </div>
 
     {}
-    <div style={delay(320)} className={`${REVEAL} absolute left-[163px] top-[432px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}>
+    <div
+      style={delay(320)}
+      className={`${REVEAL} absolute left-[163px] top-[432px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}
+    >
       <MediaGlobe query={TABLET_QUERY} />
     </div>
 
@@ -345,7 +370,9 @@ const TabletFrame = () => (
         </div>
         <div className="relative flex w-[127px] shrink-0 flex-col items-start text-[12px] leading-[1.3] text-white">
           <p className="relative w-full shrink-0 font-bold italic">Sarah Kim</p>
-          <p className="relative w-full shrink-0 opacity-70">VP People at NovaTech</p>
+          <p className="relative w-full shrink-0 opacity-70">
+            VP People at NovaTech
+          </p>
         </div>
       </div>
     </GlassCard>
@@ -358,7 +385,10 @@ const DesktopNav = () => (
     className={`${REVEAL} absolute left-0 top-0 z-10 hidden h-[90px] w-full items-center justify-center border-b border-solid border-[rgba(255,255,255,0.18)] px-[32px] desktop-sm:flex`}
   >
     <div className="relative flex w-full max-w-300 items-center justify-between">
-      <a href="#home" className="relative shrink-0 whitespace-nowrap text-[32px] leading-[1.15] tracking-[-0.96px] text-white">
+      <a
+        href="#home"
+        className="relative shrink-0 whitespace-nowrap text-[32px] leading-[1.15] tracking-[-0.96px] text-white"
+      >
         Hirefy
       </a>
       <GetStartedButton className="px-[20px] py-[14px]" />
@@ -379,7 +409,6 @@ const DesktopNav = () => (
 
 const DesktopFrame = () => (
   <div className="relative h-[913px] w-[1280px] overflow-clip">
-
     {}
     <div className="absolute left-[417px] top-[144px] flex w-[446px] flex-col items-center gap-[32px]">
       <div className="relative flex w-full shrink-0 flex-col items-center gap-[16px] text-center text-white">
@@ -393,8 +422,8 @@ const DesktopFrame = () => (
           style={delay(160)}
           className={`${REVEAL} relative w-full shrink-0 text-[16px] leading-[1.5] text-[rgba(255,255,255,0.7)]`}
         >
-          Hire exceptional talent across 180+ countries, automate compliance, and manage
-          international payroll.
+          Hire exceptional talent across 180+ countries, automate compliance,
+          and manage international payroll.
         </p>
       </div>
       <div
@@ -414,7 +443,10 @@ const DesktopFrame = () => (
     </div>
 
     {}
-    <div style={delay(320)} className={`${REVEAL} absolute left-[431px] top-[448px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}>
+    <div
+      style={delay(320)}
+      className={`${REVEAL} absolute left-[431px] top-[448px] h-[420px] w-[418px] overflow-clip rounded-[999px]`}
+    >
       <MediaGlobe query={DESKTOP_QUERY} />
     </div>
 
@@ -471,7 +503,9 @@ const DesktopFrame = () => (
         </div>
         <div className="relative flex w-[127px] shrink-0 flex-col items-start text-[12px] leading-[1.3] text-white">
           <p className="relative w-full shrink-0 font-bold italic">Sarah Kim</p>
-          <p className="relative w-full shrink-0 opacity-70">VP People at NovaTech</p>
+          <p className="relative w-full shrink-0 opacity-70">
+            VP People at NovaTech
+          </p>
         </div>
       </div>
     </GlassCard>
@@ -484,11 +518,17 @@ export const Sec2Hero = () => (
     style={{ fontFamily: HELVETICA }}
   >
     <Backdrop src="bg.png" className="min-[640px]:hidden" />
-    <Backdrop src="bg-ipad.png" className="hidden min-[640px]:block desktop-sm:hidden" />
+    <Backdrop
+      src="bg-ipad.png"
+      className="hidden min-[640px]:block desktop-sm:hidden"
+    />
     <Backdrop src="bg-desktop.png" className="hidden desktop-sm:block" />
 
     {}
-    <ScaleFrame frameWidth={402} className="relative w-full overflow-hidden min-[640px]:hidden">
+    <ScaleFrame
+      frameWidth={402}
+      className="relative w-full overflow-hidden min-[640px]:hidden"
+    >
       <PhoneFrame />
     </ScaleFrame>
     <ScaleFrame

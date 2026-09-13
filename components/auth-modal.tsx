@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -77,7 +78,9 @@ export function AuthModal({
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       {trigger && (
-        <DialogTrigger className="cursor-pointer">{trigger}</DialogTrigger>
+        <DialogTrigger render={React.isValidElement(trigger) ? trigger : undefined} className="cursor-pointer">
+          {React.isValidElement(trigger) ? undefined : trigger}
+        </DialogTrigger>
       )}
       <DialogContent className="sm:max-w-130 p-6">
         <DialogHeader className="text-left space-y-2">

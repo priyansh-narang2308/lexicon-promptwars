@@ -27,6 +27,9 @@ import {
 } from "@/components/sidebar";
 import { RiskScoreGauge } from "@/components/modules/risk-score-gauge";
 import { RiskDistributionChart } from "@/components/modules/risk-distribution-chart";
+import { PredatoryAlertCards } from "@/components/modules/predatory-alert-cards";
+import { MarketFairnessCard } from "@/components/modules/market-fairness-card";
+import { ClauseViewer } from "@/components/modules/clause-viewer";
 import { ContractUploaderDialog } from "@/components/contract-uploader";
 import { CommandMenu } from "@/components/command-menu";
 import { AuthModal } from "@/components/auth-modal";
@@ -487,6 +490,12 @@ function DashboardContent() {
                 </div>
               </div>
 
+              {/* Task 22: Predatory Clause Radar & Landmine Alert Cards */}
+              <PredatoryAlertCards
+                clauses={currentAnalysis?.clauses}
+                onNegotiateClause={() => setActiveTab("negotiate")}
+              />
+
               {/* Task 21: Recharts Risk Category & Severity Distribution */}
               <RiskDistributionChart
                 clauses={currentAnalysis?.clauses}
@@ -494,79 +503,36 @@ function DashboardContent() {
                 onSelectCategory={setSelectedCategory}
               />
 
-              {/* Seamless Roadmap Slots for Upcoming Pillar 1 Tasks (Tasks 22–26) */}
-              <div className="rounded-2xl border border-dashed border-border/80 bg-muted/20 p-6">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              {/* Task 23: Executive Summary & Market Fairness Benchmark Card */}
+              <MarketFairnessCard
+                score={Math.max(12, Math.round(100 - (currentAnalysis?.riskScore ?? 75) * 0.85))}
+                fairnessBenchmark={currentAnalysis?.fairnessBenchmark}
+                keyRisks={currentAnalysis?.keyRisks}
+                keyObligations={currentAnalysis?.keyObligations}
+                contractType={activeContract?.type}
+              />
+
+              {/* Task 24, 25, 26: Bilingual Clause-by-Clause Explorer with Audio & Filters */}
+              <div className="space-y-3 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
-                    <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                      <Layers className="size-4 text-purple-500" />
-                      <span>Next Up in Risk Scanner: Tasks 22–26</span>
+                    <h3 className="text-base font-bold text-foreground">
+                      Bilingual Clause-by-Clause Explorer
                     </h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">
-                      Executing subsequent roadmap tasks sequentially with full
-                      interactive visualizations.
+                    <p className="text-xs text-muted-foreground">
+                      Compare original legalese side-by-side with 8th-grade plain English translations, listen via Web Speech narration, and filter by risk.
                     </p>
                   </div>
-                  <span className="text-[11px] font-mono text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20 self-start sm:self-auto">
-                    Tasks 20 & 21 Active & Verified
+                  <span className="text-[11px] font-mono text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2.5 py-1 rounded-full border border-purple-500/20 self-start sm:self-auto font-semibold">
+                    Phase 4 Fully Active & Integrated
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-                  <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
-                    <div className="flex items-center justify-between text-muted-foreground">
-                      <span className="font-semibold text-foreground">
-                        Task 22
-                      </span>
-                      <span className="text-[10px] font-mono uppercase bg-purple-500/15 text-purple-600 dark:text-purple-400 font-bold px-1.5 py-0.5 rounded">
-                        Next
-                      </span>
-                    </div>
-                    <div className="font-medium text-xs mt-1">
-                      Predatory Radar Alert Cards
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">
-                      High-visibility alert banners targeting 2-year non-compete
-                      and IP forfeiture.
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
-                    <div className="flex items-center justify-between text-muted-foreground">
-                      <span className="font-semibold text-foreground">
-                        Task 23
-                      </span>
-                      <span className="text-[10px] font-mono uppercase bg-muted px-1.5 py-0.5 rounded">
-                        Queued
-                      </span>
-                    </div>
-                    <div className="font-medium text-xs mt-1">
-                      Market Fairness Benchmark Card
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">
-                      Standard commercial comparison with outlier scoring and
-                      industry percentiles.
-                    </p>
-                  </div>
-
-                  <div className="p-3.5 rounded-xl border border-border/60 bg-card/60">
-                    <div className="flex items-center justify-between text-muted-foreground">
-                      <span className="font-semibold text-foreground">
-                        Task 23–26
-                      </span>
-                      <span className="text-[10px] font-mono uppercase bg-muted px-1.5 py-0.5 rounded">
-                        Queued
-                      </span>
-                    </div>
-                    <div className="font-medium text-xs mt-1">
-                      Bilingual Clause Viewer & Speech
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">
-                      Accordion side-by-side legalese vs Plain English with Web
-                      Speech readout.
-                    </p>
-                  </div>
-                </div>
+                <ClauseViewer
+                  clauses={currentAnalysis?.clauses}
+                  onNegotiateClause={() => setActiveTab("negotiate")}
+                  selectedCategory={selectedCategory}
+                />
               </div>
             </div>
           )}

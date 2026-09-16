@@ -74,18 +74,18 @@ export function Navbar({ onOpenCommand }: NavbarProps) {
         )}
 
         <div className="flex items-center gap-2.5">
-          <button
-            type="button"
-            onClick={onOpenCommand}
-            className="hidden sm:flex items-center gap-2 text-xs text-white/70 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
-            aria-label="Open command palette"
-          >
-            <Search className="size-3.5" />
-            <span>Search or jump to...</span>
-            <kbd className="pointer-events-none inline-flex h-4.5 select-none items-center gap-1 rounded border border-white/20 bg-white/10 px-1.5 font-mono text-[10px] font-medium text-white/80">
-              ⌘K
-            </kbd>
-          </button>
+          {onOpenCommand && (
+            <button
+              type="button"
+              onClick={onOpenCommand}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 transition-colors text-xs text-white/80 cursor-pointer"
+              title="Search or Jump to..."
+            >
+              <Search className="size-3.5 text-white/70" />
+              <span className="hidden sm:inline">Search</span>
+              <kbd className="hidden sm:inline-block font-mono text-[9px] px-1 py-0.5 rounded border border-white/20 bg-white/10">⌘K</kbd>
+            </button>
+          )}
 
           <ThemeToggle
             variant="rectangle"
@@ -94,7 +94,6 @@ export function Navbar({ onOpenCommand }: NavbarProps) {
             iconClassName="size-4"
           />
 
-          {/* User Persona & Auth Trigger */}
           <AuthModal
             trigger={
               user ? (
